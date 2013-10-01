@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/custom.css" />
+</head>
+<body>
+  <h1>Search friends on venmo</h1>
+  <div id="venmoMe">
+    <div id="buttonHolder">
+      <button type='button' id="splitButton" class="btn btn-primary">Split Bill</button>
+    </div>
+    <div id="formHolder">
+      <form id="splitMoney" action="#">
+        <label for="firstName">Name: </label><input id="firstName"/><br/>
+        <label for="totalAmount">Amount: $</label><input type="number" value="0.00" id="totalAmount"/><br/>
+        <label for="message">For: </label><input id="message"/><br/>
+        <button type='button' id="chargeButton" class="btn btn-danger">Charge</button>
+        <div id="chargeWarning">
+          <text> This button will actually trigger a charge </text><br/>
+          <button type='button' id="realCharge" class="btn btn-success">Do it for reals yo!</button>
+        </div>
+      </form>
+    </div>
+    <div id="addName"></div>
+    <div id="paying"></div>
+  </div>
+  <script src="js/jquery-1.10.2.min.js"></script>
+  <script src="js/json2.js"></script>
+  <script src="js/underscore-min.js"></script>
+  <script src="js/backbone-min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
+
+

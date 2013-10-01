@@ -1,0 +1,55 @@
+/*CSS goes here!*/
+h1 {
+  text-align: center;
+}
+
+#link {
+  text-align: center;
+}
+
+#buttonHolder {
+  text-align: center;
+  padding: 20px;
+}
+
+#formHolder {
+    text-align: center;
+}
+
+#addName {
+    margin-left: auto;
+    margin-right:auto;
+    width:600px;
+}
+
+#realCharge{
+    margin: 10px;
+}
+
+.addPerson {
+    font-size:20px;
+}
+
+#chargeButton {
+    margin:20px;
+}
+
+#paying {
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+}
+
+.personSplit {
+    margin: 5px;
+}
+
+.frame {
+  border:5px solid #ddd;
+  padding:7px;
+  background:#e6e6e6;
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
+  -khtml-bor  der-radius:5px;
+  border-radius:10px
+}
