@@ -82,7 +82,6 @@
         success: processAJAX_me(this)
       })
 
-
       var processAJAX_friends = function(thi) {
         return function(data, textStatus) {
           var friends = $.parseJSON(data);
@@ -143,6 +142,7 @@
       this.$el.find("#chargeWarning").slideToggle();
     },
 
+    chargeFriends: function() {
       _.each(this.selectedFriends.models, function(friend) {
         var link = "/me/pay/" + this.token + '/' + friend.get("id") + "/-" + encodeURIComponent(friend.get("amountOwed").toString()) + '/' + encodeURIComponent(this.message);
 

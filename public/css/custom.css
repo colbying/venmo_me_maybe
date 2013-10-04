@@ -3,8 +3,9 @@ h1 {
   text-align: center;
 }
 
-#link {
+#btn-wrapper {
   text-align: center;
+  padding: 10px;
 }
 
 #buttonHolder {
