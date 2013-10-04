@@ -26,7 +26,6 @@ get '/me/pay/:token/:id/:amount/:message' do
     link << "&user_id=" + params[:id]
     link << "&note=" + params[:message]
     link << "&amount=" + params[:amount]
-    puts link
     response = HTTParty.post(link);
     response.body.to_json;
 end

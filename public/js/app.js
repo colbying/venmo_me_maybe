@@ -64,16 +64,13 @@
       this.allFriends = new FriendsList();
 
       var url = "https://api.venmo.com/me?access_token=" + this.token;
-      console.log(url);
 
       // Closure callback for the ajax request
       // I use the variable 'thi' instead of
       // 'this' because 'this' produces a syntax error
       var processAJAX_me = function(thi) {
         return function(data, textStatus) {
-          console.log(data);
           var person = $.parseJSON(data);
-          console.log(person);
           thi.user.id = person.data.id;
         };
       };
@@ -85,7 +82,6 @@
         success: processAJAX_me(this)
       })
 
-      console.log(this.user.id);
 
       var processAJAX_friends = function(thi) {
         return function(data, textStatus) {
@@ -141,27 +137,20 @@
 
     handleMessage: function(e) {
       this.message = e.currentTarget.value;
-      console.log(this.message);
     },
 
     showRealCharge: function() {
-      console.log("woo!");
       this.$el.find("#chargeWarning").slideToggle();
     },
 
-    chargeFriends: function() {
-      console.log("Number of friends " + this.numSelectedFriends + " Total: " + this.total);
       _.each(this.selectedFriends.models, function(friend) {
-        console.log(toString(friend.get("amountOwed")));
         var link = "/me/pay/" + this.token + '/' + friend.get("id") + "/-" + encodeURIComponent(friend.get("amountOwed").toString()) + '/' + encodeURIComponent(this.message);
 
-        console.log(link);
         $.ajax({
           url: link,
           dataType: 'json',
           async: false,
           success: function(resp) {
-            console.log(JSON.stringify(resp));
           }
         })
       }, this)
@@ -247,7 +236,6 @@
     newFriend["id"] = e.currentTarget.id;
     newFriend["amountOwed"] = 0;
 
-    console.log("Name: " + e.currentTarget.value + "ID: " + e.currentTarget.id);
 
     // If the collection doesn't already exist, create it
     // using an array with our new entry
