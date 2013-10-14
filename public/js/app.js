@@ -161,14 +161,13 @@
         this.total = parseFloat(e.currentTarget.value);
       }
 
-
       if (this.selectedFriends.length != 0) {
         var numFriends = this.selectedFriends.length;
         var totalAmount = parseFloat(e.currentTarget.value);
         this.$el.find("#paying").empty();
 
         _.each(this.selectedFriends.models, function(friend) {
-          var amountOwed = (totalAmount/numFriends).toFixed(2);
+          var amountOwed = (totalAmount/(numFriends + 1)).toFixed(2);
           friend.set("amountOwed", amountOwed);
           this.renderFriend(friend);
         }, this)
