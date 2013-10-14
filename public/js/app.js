@@ -112,7 +112,7 @@
       this.total = 0;
 
       // Number of friends to split with
-      this.numSelectedFriends = 0;
+      this.numSelectedFriends = 1;
 
       // Record the message
       this.message = "";
