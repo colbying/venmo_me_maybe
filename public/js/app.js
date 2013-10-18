@@ -1,6 +1,12 @@
 (function ($) {
   "use strict"
 
+  /* Backbone Model: Friend
+   * ----------------------
+   * Represents a Venmo friend that
+   * appears when you type a name
+   * into the search bar.
+   */
   var Friend = Backbone.Model.extend({
     defaults: {
       name: "",
@@ -8,6 +14,13 @@
     }
   });
 
+  /* Backbone Model: SelectedFriend
+   * -------------------------------
+   * Represents a friend that has been selected,
+   * and now is being factored into a charge.
+   * This person's name appears in a small grey box
+   * below the main search bar
+   */
   var SelectedFriend = Backbone.Model.extend({
     defaults: {
       name: "",
@@ -16,14 +29,27 @@
     }
   })
 
+  /* Backbone Collection: FriendsList
+   * -------------------------------
+   * Represents all your venmo friends
+   */
   var FriendsList = Backbone.Collection.extend({
     model: Friend
   });
 
+  /* Backbone Collection: SelectedFriendsList
+   * ----------------------------------------
+   * Represents all of your friends that you have selected
+   * to split a charge with
+   */
   var SelectedFriendsList = Backbone.Collection.extend({
     model: SelectedFriend
   });
 
+  /* Backbone View: SelectedFriendView
+   * ----------------------------------
+   * The template that shows a friend who you are about to charge
+   */
   var SelectedFriendView = Backbone.View.extend({
     tagName: "selectedFriend",
     className: "selectedFriend-container",
@@ -48,6 +74,10 @@
     }
   })
 
+  /* Backbone View: MasterView
+   * --------------------------
+   * Code that glues everything together
+   */
   var MasterView = Backbone.View.extend({
     el: $("#venmoMe"),
 
@@ -142,6 +172,10 @@
       this.$el.find("#chargeWarning").slideToggle();
     },
 
+    /* function: chargeFriends
+     * -----------------------
+     * Calls the venmo API that actually charges friends
+     */
     chargeFriends: function() {
       _.each(this.selectedFriends.models, function(friend) {
         var link = "/me/pay/" + this.token + '/' + friend.get("id") + "/-" + encodeURIComponent(friend.get("amountOwed").toString()) + '/' + encodeURIComponent(this.message);
@@ -156,6 +190,13 @@
       }, this)
     },
 
+    /* Function: handleTotal
+     * ---------------------
+     * Implments the amount of money that each
+     * person owes you. We keep a total amount
+     * in the background, and calculate how much
+     * each person owes you.
+     */
     handleTotal: function(e) {
       if (parseInt(e.currentTarget.value) != NaN) {
         this.total = parseFloat(e.currentTarget.value);
@@ -181,6 +222,13 @@
       this.$el.find("#paying").append(newFriendView.render().el);
     },
 
+    /* function: handleSearch
+     * ----------------------
+     * With each keyup, we search our friends
+     * list and display a friend if our query
+     * does not return -1. ie if our search query
+     * is a substring of someone's name
+     */
     handleSearch: function(e) {
 
       // Prevent the default action so my backbone code can run!
