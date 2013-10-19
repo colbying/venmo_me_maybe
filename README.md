@@ -1,4 +1,5 @@
-backbone-bootstrap-boilerplate
+Venmo Me Maybe
 ==============================
-
-Boilerplate files for a lightweight Backbone js and Twitter Boostrap webapp
+Ever go out with friends and need a convient way to split the bill?
+All of you have venmo?
+Perfect, just use this app to split bills convieniently
